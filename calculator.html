@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>계산기</title>
+<style>
+    *{box-sizing: border-box;}
+    #result{width: 180px; height: 50px; margin: 5px; text-align: right;}
+    #operator{ width: 50px; height: 50px; margin: 5px; text-align: center;}
+    button{ width: 50px; height: 50px; margin: 5px;}
+</style>
+</head>
+<body>
+    <input readonly id="operator">
+    <input readonly type="number" id="result">
+    <div class="row">
+        <button id="num-7">7</button>
+        <button id="num-8">8</button>
+        <button id="num-9">9</button>
+        <button id="plus">+</button>
+    </div>
+    <div class="row">
+        <button id="num-4">4</button>
+        <button id="num-5">5</button>
+        <button id="num-6">6</button>
+        <button id="minus">-</button>
+    </div>
+        <div class="row">
+        <button id="num-1">1</button>
+        <button id="num-2">2</button>
+        <button id="num-3">3</button>
+        <button id="minus">/</button>
+    </div>
+    <div class="row">
+        <button id="clear">C</button>
+        <button id="num-0">0</button>
+        <button id="calculate">=</button>
+        <button id="multiply">x</button>
+    </div>
+
+        <script>
+
+            let $num_Results = '';
+
+            const $inputValue = document.querySelector('#result');
+
+            const $result = ((event) => {
+            //document.getElementById(`operator`).readonly = false;
+            const inputValue = event.target.textContent;
+            //confirm(inputValue);
+
+            switch(Number(inputValue)){
+                case 0 :
+                    $inputValue.value += inputValue;
+                    confirm(inputValue);
+                    break;
+                case 1 :
+                    $num_Results += inputValue;
+                    console.log($num_Results);
+                    $inputValue.value = $num_Results;
+                    confirm(inputValue);
+                    break;
+                case 2 :
+                    $num_Results += inputValue;
+                    console.log($num_Results);
+                    $inputValue.value = $num_Results;
+                    confirm(inputValue);
+                    break;
+                case 3 :
+                     $num_Results += inputValue;
+                     console.log($num_Results);
+                    $inputValue.value = $num_Results;
+                    confirm(inputValue);
+                    break;
+                case 4 :
+                     $num_Results += inputValue;
+                     console.log($num_Results);
+                    $inputValue.value = $num_Results;
+                    confirm(inputValue);
+                    break;
+                case 5 :
+                     $num_Results += inputValue;
+                     console.log($num_Results);
+                    $inputValue.value = $num_Results;
+                    confirm(inputValue);
+                    break;
+                case 6 :
+                     $num_Results += inputValue;
+                     console.log($num_Results);
+                    $inputValue.value = $num_Results;
+                    confirm(inputValue);
+                    break;
+                case 7 :
+                     $num_Results += inputValue;
+                     console.log($num_Results);
+                    $inputValue.value = $num_Results;
+                    confirm(inputValue);
+                    break;
+                case 8 :
+                     $num_Results += inputValue;
+                     console.log($num_Results);
+                    $inputValue.value = $num_Results;
+                    confirm(inputValue);
+                    break;
+                case 9 :
+                     $num_Results += inputValue;
+                     console.log($num_Results);
+                    $inputValue.innerHTML = $num_Results;
+                    confirm(inputValue);
+                    break;
+            }
+            });
+
+        //버튼 클릭시 출력 함수 이벤트
+       const num0 =  document.getElementById('num-0').addEventListener('click', $result);
+       const num1 =  document.getElementById('num-1').addEventListener('click', $result);
+       const num2 =  document.getElementById('num-2').addEventListener('click', $result);
+       const num3 =  document.getElementById('num-3').addEventListener('click', $result);
+       const num4 =  document.getElementById('num-4').addEventListener('click', $result);
+       const num5 =  document.getElementById('num-5').addEventListener('click', $result);
+       const num6 =  document.getElementById('num-6').addEventListener('click', $result);
+       const num7 =  document.getElementById('num-7').addEventListener('click', $result);
+       const num8 =  document.getElementById('num-8').addEventListener('click', $result);
+       const num9 =  document.getElementById('num-9').addEventListener('click', $result);
+
+    </script>
+</body>
