@@ -28,7 +28,7 @@
         <button id="num-1">1</button>
         <button id="num-2">2</button>
         <button id="num-3">3</button>
-        <button id="minus">/</button>
+        <button id="division">/</button>
     </div>
     <div class="row">
         <button id="clear">C</button>
@@ -37,90 +37,93 @@
         <button id="multiply">x</button>
     </div>
 
-        <script>
-
-            let $num_Results = '';
-
-            const $inputValue = document.querySelector('#result');
-
-            const $result = ((event) => {
-            //document.getElementById(`operator`).readonly = false;
-            const inputValue = event.target.textContent;
-            //confirm(inputValue);
-
-            switch(Number(inputValue)){
-                case 0 :
-                    $inputValue.value += inputValue;
-                    confirm(inputValue);
-                    break;
-                case 1 :
-                    $num_Results += inputValue;
-                    console.log($num_Results);
-                    $inputValue.value = $num_Results;
-                    confirm(inputValue);
-                    break;
-                case 2 :
-                    $num_Results += inputValue;
-                    console.log($num_Results);
-                    $inputValue.value = $num_Results;
-                    confirm(inputValue);
-                    break;
-                case 3 :
-                     $num_Results += inputValue;
-                     console.log($num_Results);
-                    $inputValue.value = $num_Results;
-                    confirm(inputValue);
-                    break;
-                case 4 :
-                     $num_Results += inputValue;
-                     console.log($num_Results);
-                    $inputValue.value = $num_Results;
-                    confirm(inputValue);
-                    break;
-                case 5 :
-                     $num_Results += inputValue;
-                     console.log($num_Results);
-                    $inputValue.value = $num_Results;
-                    confirm(inputValue);
-                    break;
-                case 6 :
-                     $num_Results += inputValue;
-                     console.log($num_Results);
-                    $inputValue.value = $num_Results;
-                    confirm(inputValue);
-                    break;
-                case 7 :
-                     $num_Results += inputValue;
-                     console.log($num_Results);
-                    $inputValue.value = $num_Results;
-                    confirm(inputValue);
-                    break;
-                case 8 :
-                     $num_Results += inputValue;
-                     console.log($num_Results);
-                    $inputValue.value = $num_Results;
-                    confirm(inputValue);
-                    break;
-                case 9 :
-                     $num_Results += inputValue;
-                     console.log($num_Results);
-                    $inputValue.innerHTML = $num_Results;
-                    confirm(inputValue);
-                    break;
+    <script>
+        let numOne = '';
+        let operator = '';
+        let numTwo = '';
+        const $operator = document.querySelector('#operator');
+        const $result = document.querySelector('#result');
+        
+        const onClickNumber = (event) => {
+            if (!operator){
+                numOne += event.target.textContent;
+                $result.value += event.target.textContent;
+                return;
             }
-            });
+            if(!numTwo){
+                $result.value = '';
+            }
 
-        //버튼 클릭시 출력 함수 이벤트
-       const num0 =  document.getElementById('num-0').addEventListener('click', $result);
-       const num1 =  document.getElementById('num-1').addEventListener('click', $result);
-       const num2 =  document.getElementById('num-2').addEventListener('click', $result);
-       const num3 =  document.getElementById('num-3').addEventListener('click', $result);
-       const num4 =  document.getElementById('num-4').addEventListener('click', $result);
-       const num5 =  document.getElementById('num-5').addEventListener('click', $result);
-       const num6 =  document.getElementById('num-6').addEventListener('click', $result);
-       const num7 =  document.getElementById('num-7').addEventListener('click', $result);
-       const num8 =  document.getElementById('num-8').addEventListener('click', $result);
-       const num9 =  document.getElementById('num-9').addEventListener('click', $result);
+
+            numTwo += event.target.textContent;
+            $result.value += event.target.textContent;
+        }
+
+        document.querySelector('#num-0').addEventListener('click', onClickNumber);
+        document.querySelector('#num-1').addEventListener('click', onClickNumber);
+        document.querySelector('#num-2').addEventListener('click', onClickNumber);
+        document.querySelector('#num-3').addEventListener('click', onClickNumber);
+        document.querySelector('#num-4').addEventListener('click', onClickNumber);
+        document.querySelector('#num-5').addEventListener('click', onClickNumber);
+        document.querySelector('#num-6').addEventListener('click', onClickNumber);
+        document.querySelector('#num-7').addEventListener('click', onClickNumber);
+        document.querySelector('#num-8').addEventListener('click', onClickNumber);
+        document.querySelector('#num-9').addEventListener('click', onClickNumber);
+
+        const onClickOperator = (op) => () => {
+            if(numOne){
+                operator = op;
+                $operator.value = op;
+            }else if(numTwo){
+                 calculate();
+                 operator = op;
+                $operator.value = op;
+            }else{
+                alert('숫자를 먼저 입력하세요');
+            }
+        };
+
+                const calculate = () =>{
+            if(numTwo){
+                switch(operator){
+                    case '+':
+                      $result.value = parseInt(numOne) + parseInt(numTwo);
+                      break;
+                    case '-':
+                      $result.value = numOne - numTwo;
+                      break;
+                    case '*':
+                      $result.value = numOne * numTwo;
+                      break;
+                    case '/':
+                      $result.value = numOne / numTwo;
+                      break;
+                    default:
+                      break;
+                }
+                $operator.value = '';
+                numOne = $result.value;
+                operator = '';
+                numTwo = '';
+            }else{
+                alert('숫자를 먼저 입력하세요.');
+            }
+        };
+      
+        document.querySelector('#plus').addEventListener('click', onClickOperator('+'));
+        document.querySelector('#minus').addEventListener('click', onClickOperator('-'));
+        document.querySelector('#division').addEventListener('click', onClickOperator('/'));
+        document.querySelector('#multiply').addEventListener('click', onClickOperator('*'));
+        document.querySelector('#calculate').addEventListener('click', calculate);
+        
+        document.querySelector('#clear').addEventListener('click', ()=>{
+            numOne = '';
+            operator = '';
+            numTwo = '';
+            $operator.value = '';
+            $result.value = '';
+        })
+        
 
     </script>
 </body>
